@@ -35,24 +35,45 @@
       <h2 style="align-self: flex-start">Randomiseur De Mots</h2>
       <div>
         <label class="checkbox-inline">
-          <input type="radio" name="language" value="french" /> Français
+          <input
+            type="radio"
+            name="language"
+            value="french"
+            onclick="displayLanguage()"
+          />
+          Français
         </label>
         <label class="checkbox-inline">
-          <input type="radio" name="language" value="english" /> Anglais
+          <input
+            type="radio"
+            name="language"
+            value="english"
+            onclick="displayLanguage()"
+          />
+          Anglais
         </label>
         <label class="checkbox-inline">
-          <input type="radio" name="language" value="spanish" /> Espagnol
+          <input
+            type="radio"
+            name="language"
+            value="spanish"
+            onclick="displayLanguage()"
+          />
+          Espagnol
         </label>
       </div>
       <br />
       <button onclick="randomize()">Randomiser</button> &nbsp;&nbsp;
-      <button onclick="toggleText()">Montrer la Réponse</button>
+      <button onclick="displayResult()">Montrer la Réponse</button>
       <br />
       <br />
-      <p id="french">Français:</p>
-      <p id="english">Anglais:</p>
-      <p id="spanish">Espagnol:</p>
-
+      <div id="languages" style="display: flex; justify-content: center">
+        <div style="text-align: left">
+          <p id="french">Français:</p>
+          <p id="english">Anglais:</p>
+          <p id="spanish">Espagnol:</p>
+        </div>
+      </div>
       <br />
       <br />
       <table id="words-table" class="display" style="min-width: 700px">
@@ -105,16 +126,13 @@
         ],
       ];
 
-      function toggleText() {
+      function displayResult() {
+        var french = document.getElementById("french");
         var english = document.getElementById("english");
         var spanish = document.getElementById("spanish");
-        if (english.classList.contains("hidden")) {
-          english.classList.remove("hidden");
-          spanish.classList.remove("hidden");
-        } else {
-          english.classList.add("hidden");
-          spanish.classList.add("hidden");
-        }
+        french.classList.remove("hidden");
+        english.classList.remove("hidden");
+        spanish.classList.remove("hidden");
       }
 
       function displayTable(e) {
@@ -130,9 +148,43 @@
         }
       }
 
+      var aux = null;
+      function displayLanguage() {
+        console.log("jajajja");
+        var languages = document.getElementsByName("language");
+
+        for (i = 0; i < languages.length; i++) {
+          if (languages[i].checked) {
+            var language = languages[i].value;
+            if (language === "french") {
+              aux = document.getElementById("french").textContent;
+              document.getElementById("english").classList.add("hidden");
+              document.getElementById("spanish").classList.add("hidden");
+            } else if (language === "english") {
+              aux = document.getElementById("english").textContent;
+              document.getElementById("french").classList.add("hidden");
+              document.getElementById("spanish").classList.add("hidden");
+            } else if (language === "spanish") {
+              aux = document.getElementById("spanish").textContent;
+              document.getElementById("french").classList.add("hidden");
+              document.getElementById("english").classList.add("hidden");
+            }
+          }
+        }
+      }
+
       function randomize() {
-        document.getElementById("english").classList.add("hidden");
-        document.getElementById("spanish").classList.add("hidden");
+        console.log({ aux });
+        if (aux === "french") {
+          document.getElementById("english").classList.add("hidden");
+          document.getElementById("spanish").classList.add("hidden");
+        } else if (aux === "english") {
+          document.getElementById("french").classList.add("hidden");
+          document.getElementById("spanish").classList.add("hidden");
+        } else if (aux === "spanish") {
+          document.getElementById("french").classList.add("hidden");
+          document.getElementById("english").classList.add("hidden");
+        }
 
         var randomIndex = Math.floor(Math.random() * wordPairs[0].length);
         var randomWordPair = wordPairs[0][randomIndex];
