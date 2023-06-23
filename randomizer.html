@@ -1,0 +1,90 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <title>Word Randomizer</title>
+</head>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  .hidden {
+      display: none;
+    }
+</style>
+
+<body>
+
+
+  <div class="container">
+    <h2 style="align-self:flex-start;">Randomiseur De Mots</h2>
+    <button onclick="randomize()">Randomiser</button>
+    <button onclick="toggleText()">Montrer La Réponse</button>
+
+    <p id="french">Français:</p>
+    <p id="english">Anglais:</p>
+    <p id="spanish">Espagnol:</p>
+  </div>
+
+  <script type="text/javascript">
+    var wordPairs = [
+      //LEÇON 16
+      [
+        { french: "anorak", english: "anorak", spanish: "chaqueta de invierno" },
+      { french: "tablier", english: "apron", spanish: "delantal" },
+      { french: "béret", english: "beret", spanish: "boina" },
+      { french: "bonnet de bain", english: "bathing cap", spanish: "gorro de baño" },
+      { french: "maillot de bain", english: "swimsuit", spanish: "vestido de baño" },
+      { french: "robe de chambre", english: "dressing gown", spanish: "bata" },
+      { french: "ceinture", english: "belt", spanish: "cinturón" },
+      { french: "bermuda", english: "shorts", spanish: "bermudas" },
+      { french: "veste", english: "jacket", spanish: "chaqueta" },
+      { french: "blouse", english: "blouse", spanish: "blusa" },
+      { french: "bottes", english: "boots", spanish: "botas" },
+      { french: "noeud papillon", english: "bow tie", spanish: "corbata" },
+      { french: "soutien-gorge", english: "bra", spanish: "brasier" },
+      { french: "bretelle", english: "suspenders", spanish: "tiranta" },
+      { french: "boucle", english: "buckle", spanish: "hebilla" },
+    ],
+    ];
+
+    function toggleText() {
+      var english = document.getElementById("english");
+      var spanish = document.getElementById("spanish");
+      if (english.classList.contains("hidden")) {
+        english.classList.remove("hidden");
+        spanish.classList.remove("hidden");
+      } else {
+        english.classList.add("hidden");
+        spanish.classList.add("hidden");
+      }
+    }
+   
+
+    function randomize() {
+      document.getElementById("english").classList.add("hidden")
+      document.getElementById("spanish").classList.add("hidden")
+
+      console.log('jajja', wordPairs[0].length)
+
+      var randomIndex = Math.floor(Math.random() * wordPairs[0].length);
+      var randomWordPair = wordPairs[0][randomIndex];
+      document.getElementById("french").textContent = "Français: " + randomWordPair.french;
+      document.getElementById("english").textContent = "Anglais: " + randomWordPair.english;
+      document.getElementById("spanish").textContent = "Espagnol: " + randomWordPair.spanish;
+
+      
+    }
+  </script>
+
+</body>
+
+</html>
