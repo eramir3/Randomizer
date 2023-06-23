@@ -26,6 +26,17 @@
 
   <div class="container">
     <h2 style="align-self:flex-start;">Randomiseur De Mots</h2>
+    <div>
+      <label class="checkbox-inline">
+        <input type="radio" name="language" value="french"> Français
+      </label>
+      <label class="checkbox-inline">
+        <input type="radio" name="language" value="english"> Anglais
+      </label>
+      <label class="checkbox-inline">
+        <input type="radio" name="language" value="spanish"> Espagnol
+      </label>
+    </div>
     <button onclick="randomize()">Randomiser</button>
     <button onclick="toggleText()">Montrer La Réponse</button>
 
@@ -72,8 +83,6 @@
     function randomize() {
       document.getElementById("english").classList.add("hidden")
       document.getElementById("spanish").classList.add("hidden")
-
-      console.log('jajja', wordPairs[0].length)
 
       var randomIndex = Math.floor(Math.random() * wordPairs[0].length);
       var randomWordPair = wordPairs[0][randomIndex];
