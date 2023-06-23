@@ -1,100 +1,153 @@
-<!DOCTYPE>
+<!DOCTYPE >
 <html>
+  <head>
+    <title>Word Randomizer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+  </head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-<head>
-  <title>Word Randomizer</title>
-</head>
-<style>
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: xx-large;
-  }
+    .container {
+      text-align: center;
+      font-size: large;
+    }
 
-  .container {
-    text-align: center;
-    margin-bottom: 200px;
-  }
-
-  .hidden {
+    .hidden {
       display: none;
     }
-</style>
+  </style>
 
-<body>
+  <body>
+    <div class="container">
+      <h2 style="align-self: flex-start">Randomiseur De Mots</h2>
+      <div>
+        <label class="checkbox-inline">
+          <input type="radio" name="language" value="french" /> Français
+        </label>
+        <label class="checkbox-inline">
+          <input type="radio" name="language" value="english" /> Anglais
+        </label>
+        <label class="checkbox-inline">
+          <input type="radio" name="language" value="spanish" /> Espagnol
+        </label>
+      </div>
+      <br />
+      <button onclick="randomize()">Randomiser</button> &nbsp;&nbsp;
+      <button onclick="toggleText()">Montrer la Réponse</button>
+      <br />
+      <br />
+      <p id="french">Français:</p>
+      <p id="english">Anglais:</p>
+      <p id="spanish">Espagnol:</p>
 
-
-  <div class="container">
-    <h2 style="align-self:flex-start;">Randomiseur De Mots</h2>
-    <div>
-      <label class="checkbox-inline">
-        <input type="radio" name="language" value="french"> Français
-      </label>
-      <label class="checkbox-inline">
-        <input type="radio" name="language" value="english"> Anglais
-      </label>
-      <label class="checkbox-inline">
-        <input type="radio" name="language" value="spanish"> Espagnol
-      </label>
+      <br />
+      <br />
+      <table id="words-table" class="display" style="min-width: 700px">
+        <thead>
+          <tr>
+            <th>Français</th>
+            <th>Anglais</th>
+            <th>Espagnol</th>
+          </tr>
+        </thead>
+      </table>
+      <button id="table-button" onclick="displayTable()">Hide Table</button>
     </div>
-    <button onclick="randomize()">Randomiser</button>
-    <button onclick="toggleText()">Montrer la Réponse</button>
 
-    <p id="french">Français:</p>
-    <p id="english">Anglais:</p>
-    <p id="spanish">Espagnol:</p>
-  </div>
+    <script type="text/javascript">
+      var wordPairs = [
+        //LEÇON 16
+        [
+          {
+            french: "anorak",
+            english: "anorak",
+            spanish: "chaqueta de invierno",
+          },
+          { french: "tablier", english: "apron", spanish: "delantal" },
+          { french: "béret", english: "beret", spanish: "boina" },
+          {
+            french: "bonnet de bain",
+            english: "bathing cap",
+            spanish: "gorro de baño",
+          },
+          {
+            french: "maillot de bain",
+            english: "swimsuit",
+            spanish: "vestido de baño",
+          },
+          {
+            french: "robe de chambre",
+            english: "dressing gown",
+            spanish: "bata",
+          },
+          { french: "ceinture", english: "belt", spanish: "cinturón" },
+          { french: "bermuda", english: "shorts", spanish: "bermudas" },
+          { french: "veste", english: "jacket", spanish: "chaqueta" },
+          { french: "blouse", english: "blouse", spanish: "blusa" },
+          { french: "bottes", english: "boots", spanish: "botas" },
+          { french: "noeud papillon", english: "bow tie", spanish: "corbata" },
+          { french: "soutien-gorge", english: "bra", spanish: "brasier" },
+          { french: "bretelle", english: "suspenders", spanish: "tiranta" },
+          { french: "boucle", english: "buckle", spanish: "hebilla" },
+        ],
+      ];
 
-  <script type="text/javascript">
-    var wordPairs = [
-      //LEÇON 16
-      [
-        { french: "anorak", english: "anorak", spanish: "chaqueta de invierno" },
-      { french: "tablier", english: "apron", spanish: "delantal" },
-      { french: "béret", english: "beret", spanish: "boina" },
-      { french: "bonnet de bain", english: "bathing cap", spanish: "gorro de baño" },
-      { french: "maillot de bain", english: "swimsuit", spanish: "vestido de baño" },
-      { french: "robe de chambre", english: "dressing gown", spanish: "bata" },
-      { french: "ceinture", english: "belt", spanish: "cinturón" },
-      { french: "bermuda", english: "shorts", spanish: "bermudas" },
-      { french: "veste", english: "jacket", spanish: "chaqueta" },
-      { french: "blouse", english: "blouse", spanish: "blusa" },
-      { french: "bottes", english: "boots", spanish: "botas" },
-      { french: "noeud papillon", english: "bow tie", spanish: "corbata" },
-      { french: "soutien-gorge", english: "bra", spanish: "brasier" },
-      { french: "bretelle", english: "suspenders", spanish: "tiranta" },
-      { french: "boucle", english: "buckle", spanish: "hebilla" },
-    ],
-    ];
-
-    function toggleText() {
-      var english = document.getElementById("english");
-      var spanish = document.getElementById("spanish");
-      if (english.classList.contains("hidden")) {
-        english.classList.remove("hidden");
-        spanish.classList.remove("hidden");
-      } else {
-        english.classList.add("hidden");
-        spanish.classList.add("hidden");
+      function toggleText() {
+        var english = document.getElementById("english");
+        var spanish = document.getElementById("spanish");
+        if (english.classList.contains("hidden")) {
+          english.classList.remove("hidden");
+          spanish.classList.remove("hidden");
+        } else {
+          english.classList.add("hidden");
+          spanish.classList.add("hidden");
+        }
       }
-    }
-   
 
-    function randomize() {
-      document.getElementById("english").classList.add("hidden")
-      document.getElementById("spanish").classList.add("hidden")
+      function displayTable(e) {
+        var table = document.getElementById("words-table_wrapper");
+        var button = document.getElementById("table-button");
 
-      var randomIndex = Math.floor(Math.random() * wordPairs[0].length);
-      var randomWordPair = wordPairs[0][randomIndex];
-      document.getElementById("french").textContent = "Français: " + randomWordPair.french;
-      document.getElementById("english").textContent = "Anglais: " + randomWordPair.english;
-      document.getElementById("spanish").textContent = "Espagnol: " + randomWordPair.spanish;
+        if (table.classList.contains("hidden")) {
+          table.classList.remove("hidden");
+          button.innerHTML = "Hide Table";
+        } else {
+          table.classList.add("hidden");
+          button.innerHTML = "Show Table";
+        }
+      }
 
-      
-    }
-  </script>
+      function randomize() {
+        document.getElementById("english").classList.add("hidden");
+        document.getElementById("spanish").classList.add("hidden");
 
-</body>
+        var randomIndex = Math.floor(Math.random() * wordPairs[0].length);
+        var randomWordPair = wordPairs[0][randomIndex];
+        document.getElementById("french").textContent =
+          "Français: " + randomWordPair.french;
+        document.getElementById("english").textContent =
+          "Anglais: " + randomWordPair.english;
+        document.getElementById("spanish").textContent =
+          "Espagnol: " + randomWordPair.spanish;
+      }
 
+      $("#words-table").DataTable({
+        data: wordPairs[0],
+        columns: [{ data: "french" }, { data: "english" }, { data: "spanish" }],
+      });
+    </script>
+  </body>
 </html>
