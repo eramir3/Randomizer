@@ -77,7 +77,9 @@
       </div>
       <br />
       <br />
-      <button id="table-button" onclick="displayTable()">Afficher le Tableau</button>
+      <button id="table-button" onclick="displayTable()">
+        Afficher le Tableau
+      </button>
       <table id="words-table" class="display" style="min-width: 700px">
         <thead>
           <tr>
@@ -129,30 +131,61 @@
           { french: "tellement", english: "so, such", spanish: "semejante" },
           { french: "même", english: "although, even", spanish: "aunque" },
           { french: "facteur", english: "postman", spanish: "cartero" },
-          { french: "chouette", english: "owl, cool", spanish: "buho, chevere" },
+          {
+            french: "chouette",
+            english: "owl, cool",
+            spanish: "buho, chevere",
+          },
           { french: "se rendre", english: "go", spanish: "ir" },
           { french: "soutenir", english: "support", spanish: "sostener" },
           { french: "falloir", english: "to need", spanish: "necesitar" },
           { french: "garder", english: "to keep", spanish: "mantener" },
           { french: "donner", english: "to give", spanish: "dar" },
-          { french: "étant donné", english: "given that", spanish: "puesto que, dado que" },
+          {
+            french: "étant donné",
+            english: "given that",
+            spanish: "puesto que, dado que",
+          },
           { french: "drôle", english: "funny", spanish: "chistoso" },
           { french: "amusant", english: "amusing", spanish: "divertido" },
           { french: "prix", english: "price", spanish: "premio, precio" },
           { french: "asperger", english: "to sprinkle", spanish: "rociar" },
-          { french: "a bien profité de", english: "took adventage of", spanish: "sacar ventaja de" },
-          { french: "arroser", english: "to water", spanish: "'regar' las matas" },
+          {
+            french: "a bien profité de",
+            english: "took adventage of",
+            spanish: "sacar ventaja de",
+          },
+          {
+            french: "arroser",
+            english: "to water",
+            spanish: "'regar' las matas",
+          },
           { french: "tuyau", english: "hose", spanish: "manguera" },
-          { french: "partie", english: "party, part", spanish: "parte, fiesta" },
+          {
+            french: "partie",
+            english: "party, part",
+            spanish: "parte, fiesta",
+          },
           { french: "debout", english: "upright", spanish: "vertical" },
-          { french: "bredouille", english: "empty-handed", spanish: "con las manos vacías" },
+          {
+            french: "bredouille",
+            english: "empty-handed",
+            spanish: "con las manos vacías",
+          },
           { french: "tenir", english: "to hold", spanish: "sostener" },
           { french: "attraper", english: "to catch", spanish: "atrapar" },
-          { french: "parfois même", english: "sometimes", spanish: "algunas veces" },
+          {
+            french: "parfois même",
+            english: "sometimes",
+            spanish: "algunas veces",
+          },
+          { french: "ailleur", english: "elsewhere", spanish: "en otra parte" },
+          { french: "empêcher", english: "to prevent", spanish: "evitar" },
+          { french: "chômage", english: "unemployment", spanish: "desempleo" },
         ],
       ];
 
-      var selectedLanguage = null
+      var selectedLanguage = null;
       var french = document.getElementById("french");
       var english = document.getElementById("english");
       var spanish = document.getElementById("spanish");
@@ -162,6 +195,7 @@
       function init() {
         document.getElementById("words-table_wrapper").classList.add("hidden");
         displayLanguage();
+        randomize();
       }
 
       function displayResult() {
@@ -174,7 +208,7 @@
         var table = document.getElementById("words-table_wrapper");
         if (table.classList.contains("hidden")) {
           table.classList.remove("hidden");
-          button.innerHTML = "Masquer le Tableaule";
+          button.innerHTML = "Masquer le Tableau";
         } else {
           table.classList.add("hidden");
           button.innerHTML = "Afficher le Tableau";
@@ -206,6 +240,17 @@
       }
 
       function randomize() {
+        if (
+          french.classList.contains("hidden") ||
+          english.classList.contains("hidden") ||
+          spanish.classList.contains("hidden")
+        ) {
+          french.classList.remove("hidden");
+          english.classList.remove("hidden");
+          spanish.classList.remove("hidden");
+          return;
+        }
+
         if (selectedLanguage === "french") {
           french.classList.remove("hidden");
           english.classList.add("hidden");
