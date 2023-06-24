@@ -39,6 +39,7 @@
             type="radio"
             name="language"
             value="french"
+            checked
             onclick="displayLanguage()"
           />
           Français
@@ -76,6 +77,7 @@
       </div>
       <br />
       <br />
+      <button id="table-button" onclick="displayTable()">Afficher le Tableau</button>
       <table id="words-table" class="display" style="min-width: 700px">
         <thead>
           <tr>
@@ -85,12 +87,11 @@
           </tr>
         </thead>
       </table>
-      <button id="table-button" onclick="displayTable()">Hide Table</button>
     </div>
 
     <script type="text/javascript">
       var wordPairs = [
-        //LEÇON 16
+        //Leçon 16
         [
           {
             french: "anorak",
@@ -123,83 +124,115 @@
           { french: "soutien-gorge", english: "bra", spanish: "brasier" },
           { french: "bretelle", english: "suspenders", spanish: "tiranta" },
           { french: "boucle", english: "buckle", spanish: "hebilla" },
+
+          // Random
+          { french: "tellement", english: "so, such", spanish: "semejante" },
+          { french: "même", english: "although, even", spanish: "aunque" },
+          { french: "facteur", english: "postman", spanish: "cartero" },
+          { french: "chouette", english: "owl, cool", spanish: "buho, chevere" },
+          { french: "se rendre", english: "go", spanish: "ir" },
+          { french: "soutenir", english: "support", spanish: "sostener" },
+          { french: "falloir", english: "to need", spanish: "necesitar" },
+          { french: "garder", english: "to keep", spanish: "mantener" },
+          { french: "donner", english: "to give", spanish: "dar" },
+          { french: "étant donné", english: "given that", spanish: "puesto que, dado que" },
+          { french: "drôle", english: "funny", spanish: "chistoso" },
+          { french: "amusant", english: "amusing", spanish: "divertido" },
+          { french: "prix", english: "price", spanish: "premio, precio" },
+          { french: "asperger", english: "to sprinkle", spanish: "rociar" },
+          { french: "a bien profité de", english: "took adventage of", spanish: "sacar ventaja de" },
+          { french: "arroser", english: "to water", spanish: "'regar' las matas" },
+          { french: "tuyau", english: "hose", spanish: "manguera" },
+          { french: "partie", english: "party, part", spanish: "parte, fiesta" },
+          { french: "debout", english: "upright", spanish: "vertical" },
+          { french: "bredouille", english: "empty-handed", spanish: "con las manos vacías" },
+          { french: "tenir", english: "to hold", spanish: "sostener" },
+          { french: "attraper", english: "to catch", spanish: "atrapar" },
+          { french: "parfois même", english: "sometimes", spanish: "algunas veces" },
         ],
       ];
 
+      var selectedLanguage = null
+      var french = document.getElementById("french");
+      var english = document.getElementById("english");
+      var spanish = document.getElementById("spanish");
+      var languages = document.getElementsByName("language");
+      var button = document.getElementById("table-button");
+
+      function init() {
+        document.getElementById("words-table_wrapper").classList.add("hidden");
+        displayLanguage();
+      }
+
       function displayResult() {
-        var french = document.getElementById("french");
-        var english = document.getElementById("english");
-        var spanish = document.getElementById("spanish");
         french.classList.remove("hidden");
         english.classList.remove("hidden");
         spanish.classList.remove("hidden");
       }
 
-      function displayTable(e) {
+      function displayTable() {
         var table = document.getElementById("words-table_wrapper");
-        var button = document.getElementById("table-button");
-
         if (table.classList.contains("hidden")) {
           table.classList.remove("hidden");
-          button.innerHTML = "Hide Table";
+          button.innerHTML = "Masquer le Tableaule";
         } else {
           table.classList.add("hidden");
-          button.innerHTML = "Show Table";
+          button.innerHTML = "Afficher le Tableau";
         }
       }
 
-      var aux = null;
       function displayLanguage() {
-        console.log("jajajja");
-        var languages = document.getElementsByName("language");
-
         for (i = 0; i < languages.length; i++) {
           if (languages[i].checked) {
             var language = languages[i].value;
             if (language === "french") {
-              aux = document.getElementById("french").textContent;
-              document.getElementById("english").classList.add("hidden");
-              document.getElementById("spanish").classList.add("hidden");
+              selectedLanguage = french.id;
+              french.classList.remove("hidden");
+              english.classList.add("hidden");
+              spanish.classList.add("hidden");
             } else if (language === "english") {
-              aux = document.getElementById("english").textContent;
-              document.getElementById("french").classList.add("hidden");
-              document.getElementById("spanish").classList.add("hidden");
+              selectedLanguage = english.id;
+              english.classList.remove("hidden");
+              french.classList.add("hidden");
+              spanish.classList.add("hidden");
             } else if (language === "spanish") {
-              aux = document.getElementById("spanish").textContent;
-              document.getElementById("french").classList.add("hidden");
-              document.getElementById("english").classList.add("hidden");
+              selectedLanguage = spanish.id;
+              spanish.classList.remove("hidden");
+              french.classList.add("hidden");
+              english.classList.add("hidden");
             }
           }
         }
       }
 
       function randomize() {
-        console.log({ aux });
-        if (aux === "french") {
-          document.getElementById("english").classList.add("hidden");
-          document.getElementById("spanish").classList.add("hidden");
-        } else if (aux === "english") {
-          document.getElementById("french").classList.add("hidden");
-          document.getElementById("spanish").classList.add("hidden");
-        } else if (aux === "spanish") {
-          document.getElementById("french").classList.add("hidden");
-          document.getElementById("english").classList.add("hidden");
+        if (selectedLanguage === "french") {
+          french.classList.remove("hidden");
+          english.classList.add("hidden");
+          spanish.classList.add("hidden");
+        } else if (selectedLanguage === "english") {
+          english.classList.remove("hidden");
+          french.classList.add("hidden");
+          spanish.classList.add("hidden");
+        } else if (selectedLanguage === "spanish") {
+          spanish.classList.remove("hidden");
+          french.classList.add("hidden");
+          english.classList.add("hidden");
         }
 
         var randomIndex = Math.floor(Math.random() * wordPairs[0].length);
         var randomWordPair = wordPairs[0][randomIndex];
-        document.getElementById("french").textContent =
-          "Français: " + randomWordPair.french;
-        document.getElementById("english").textContent =
-          "Anglais: " + randomWordPair.english;
-        document.getElementById("spanish").textContent =
-          "Espagnol: " + randomWordPair.spanish;
+        french.textContent = "Français: " + randomWordPair.french;
+        english.textContent = "Anglais: " + randomWordPair.english;
+        spanish.textContent = "Espagnol: " + randomWordPair.spanish;
       }
 
       $("#words-table").DataTable({
         data: wordPairs[0],
         columns: [{ data: "french" }, { data: "english" }, { data: "spanish" }],
       });
+
+      init();
     </script>
   </body>
 </html>
