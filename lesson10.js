@@ -61,9 +61,9 @@ var lesson10 = [
   },
   {
     lesson: 10,
-    french: "fous",
+    french: "fou/folle",
     english: "crazy",
-    spanish: "loco",
+    spanish: "loco/loca",
   },
   {
     lesson: 10,
