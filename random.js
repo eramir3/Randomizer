@@ -199,4 +199,10 @@ var random = [
     english: "factory",
     spanish: "fabrica",
   },
+  {
+    lesson: "-",
+    french: "ennuyé",
+    english: "bored",
+    spanish: "aburrido",
+  },
 ];

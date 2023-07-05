@@ -12,6 +12,15 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="lesson2.js"></script>
+    <script src="lesson3.js"></script>
+    <script src="lesson4.js"></script>
+    <script src="lesson5.js"></script>
+    <script src="lesson6.js"></script>
+    <script src="lesson7.js"></script>
+    <script src="lesson8.js"></script>
+    <script src="lesson9.js"></script>
+    <script src="lesson10.js"></script>
     <script src="lesson16.js"></script>
     <script src="random.js"></script>
   </head>
@@ -95,7 +104,21 @@
     </div>
 
     <script type="text/javascript">
-      var wordPairs = [[...lesson16, ...random]];
+      var wordPairs = [
+        [
+          ...lesson2,
+          ...lesson3,
+          ...lesson4,
+          ...lesson5,
+          ...lesson6,
+          ...lesson7,
+          ...lesson8,
+          ...lesson9,
+          ...lesson10,
+          ...lesson16,
+          ...random,
+        ],
+      ];
 
       var selectedLanguage = null;
       var french = document.getElementById("french");

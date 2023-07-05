@@ -1,4 +1,4 @@
-var lesson2 = [
+var lesson3 = [
   {
     lesson: 3,
     french: "époque",
