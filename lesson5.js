@@ -1,0 +1,86 @@
+var lesson5 = [
+  {
+    lesson: 5,
+    french: "violet",
+    english: "mauve",
+    spanish: "violeta",
+  },
+  {
+    lesson: 5,
+    french: "violet",
+    english: "purple",
+    spanish: "morado",
+  },
+  {
+    lesson: 5,
+    french: "châtain",
+    english: "dark blond",
+    spanish: "castaño",
+  },
+  {
+    lesson: 5,
+    french: "pâle",
+    english: "pale",
+    spanish: "pálido",
+  },
+  {
+    lesson: 5,
+    french: "majorette",
+    english: "cheerleader",
+    spanish: "porrista",
+  },
+  {
+    lesson: 5,
+    french: "foncé/obscur",
+    english: "dark",
+    spanish: "oscuro",
+  },
+  {
+    lesson: 5,
+    french: "appartenir",
+    english: "to belong",
+    spanish: "pertenecer",
+  },
+  {
+    lesson: 5,
+    french: "pire",
+    english: "worst",
+    spanish: "peor",
+  },
+  {
+    lesson: 5,
+    french: "loyal/e/loyaux",
+    english: "loyal",
+    spanish: "leal/es",
+  },
+  {
+    lesson: 5,
+    french: "paresseux",
+    english: "lazy",
+    spanish: "perezoso",
+  },
+  {
+    lesson: 5,
+    french: "lux",
+    english: "luxury",
+    spanish: "lujoso",
+  },
+  {
+    lesson: 5,
+    french: "juger",
+    english: "to judge",
+    spanish: "juzgar",
+  },
+  {
+    lesson: 5,
+    french: "tout à sujet",
+    english: "all about",
+    spanish: "todo sobre",
+  },
+  {
+    lesson: 5,
+    french: "sujet",
+    english: "subject",
+    spanish: "sujeto",
+  },
+];

@@ -193,4 +193,10 @@ var random = [
     english: "nibble",
     spanish: "picar",
   },
+  {
+    lesson: "-",
+    french: "usine",
+    english: "factory",
+    spanish: "fabrica",
+  },
 ];
