@@ -229,9 +229,9 @@ var lesson12 = [
   },
   {
     lesson: 12,
-    french: "gazon",
+    french: "pelouse/gazon",
     english: "grass",
-    spanish: "césped",
+    spanish: "grama/césped",
   },
   {
     lesson: 12,

@@ -205,4 +205,10 @@ var random = [
     english: "bored",
     spanish: "aburrido",
   },
+  {
+    lesson: "-",
+    french: "boniment",
+    english: "spiel/twist",
+    spanish: "rollo",
+  },
 ];
