@@ -115,13 +115,13 @@ var lesson11 = [
   },
   {
     lesson: 11,
-    french: "sourbrows",
-    english: "eyelash",
+    french: "sourcils",
+    english: "eyebrows",
     spanish: "cejas",
   },
   {
     lesson: 11,
-    french: "e",
+    french: "cils",
     english: "eyelashes",
     spanish: "pestañas",
   },
@@ -136,12 +136,6 @@ var lesson11 = [
     french: "cou",
     english: "neck",
     spanish: "cuello",
-  },
-  {
-    lesson: 11,
-    french: "",
-    english: "",
-    spanish: "",
   },
   {
     lesson: 11,
