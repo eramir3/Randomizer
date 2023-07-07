@@ -207,8 +207,20 @@ var random = [
   },
   {
     lesson: "-",
+    french: "ennuyeuse",
+    english: "boring",
+    spanish: "aburrido",
+  },
+  {
+    lesson: "-",
     french: "boniment",
     english: "spiel/twist",
     spanish: "rollo",
+  },
+  {
+    lesson: "-",
+    french: "afficher",
+    english: "to display",
+    spanish: "mostrar",
   },
 ];
