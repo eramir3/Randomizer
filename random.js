@@ -223,4 +223,10 @@ var random = [
     english: "to display",
     spanish: "mostrar",
   },
+  {
+    lesson: "-",
+    french: "pas de soucis",
+    english: "no worries",
+    spanish: "no hay problema",
+  },
 ];
